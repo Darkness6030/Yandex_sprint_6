@@ -10,21 +10,23 @@ import org.mockito.MockitoAnnotations;
 
 @RunWith(Parameterized.class)
 public class LionParametersTest {
-    String sex;
-    boolean hasMane;
+    private String sex;
+    private boolean hasMane;
     Feline feline = Mockito.mock(Feline.class);
 
     public LionParametersTest(String sex, boolean hasMane) {
         this.sex = sex;
         this.hasMane = hasMane;
     }
-    @Parameterized.Parameters
+
+    @Parameterized.Parameters(name = "Проверка возвращаемого значения в зависимости от пола. Тестовые данные: {0} {1}")
     public static Object[][] lionSexParameters() {
         return new Object[][]{
                 {"Самец", true},
                 {"Самка", false},
         };
     }
+
     @Before
     public void init() {
         MockitoAnnotations.openMocks(this);

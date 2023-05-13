@@ -10,34 +10,38 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
 @RunWith(MockitoJUnitRunner.class)
 public class LionAlexTest {
+    private final int noKittensLionAlex = 0;
     @Spy
     Feline feline = new Feline();
+
     @Before
     public void init() {
         MockitoAnnotations.openMocks(this);
     }
+
     @Test
     public void getFriends() throws Exception {
         LionAlex lionAlex = new LionAlex(feline);
         Map<String, String> expectedFriends = new HashMap<>();
-        expectedFriends.put("Зебра","Марти");
-        expectedFriends.put("Бегемотиха","Глория");
-        expectedFriends.put("Жираф","Мелман");
-        assertEquals(expectedFriends,lionAlex.getFriends());
+        expectedFriends.put("Зебра", "Марти");
+        expectedFriends.put("Бегемотиха", "Глория");
+        expectedFriends.put("Жираф", "Мелман");
+        assertEquals(expectedFriends, lionAlex.getFriends());
     }
 
     @Test
     public void getPlaceOfLiving() throws Exception {
         LionAlex lionAlex = new LionAlex(feline);
-        assertEquals("Нью-Йоркский зоопарк",lionAlex.getPlaceOfLiving());
+        assertEquals("Нью-Йоркский зоопарк", lionAlex.getPlaceOfLiving());
     }
 
     @Test
     public void getKittens() throws Exception {
         LionAlex lionAlex = new LionAlex(feline);
-        assertEquals(0,lionAlex.getKittens());
+        assertEquals(noKittensLionAlex, lionAlex.getKittens());
     }
 }
